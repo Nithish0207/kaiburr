@@ -39,7 +39,8 @@ We can use tools like Postman or curl or any other HTTP client to interact with 
   
   •	DELETE a server by ID: DELETE- http://localhost:8080/servers/{id}
 
-
+**Output:** <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%201">Task 1 Screenshots </a>
+  
   ------
 
 ### Task 3:
@@ -62,6 +63,8 @@ Deployed a Spring Boot application and MongoDB in separate pods within a Kuberne
   
   •	<b>NodePort Service (Exposure):</b> Expose your Spring Boot application to the external world using a NodePort service. This allows external access to your application. Get the minikube IP from the node and the port where our spring boot application is running.</br>
 
+**Output:** <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%203">Task 3 Screenshots </a>
+
 ------
 
 ### Task 4
@@ -78,6 +81,8 @@ The web user interface (UI) is created for task 1 that allows users to create, d
 
 <b>Usage:</b></br>
 You can use this web UI as a frontend interface for task 1. Make sure your backend is set up to handle the data operations (create, display, delete) that this UI requires.</br>
+
+**Output:** <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%204">Task 4 Screenshots </a>
 
 ------
 
@@ -96,6 +101,8 @@ I have defined all the YAML configuration for GitHub Actions workflow in maven.y
 
 <b>Secrets:</b></br>
 To securely store sensitive information like Docker Hub credentials, you can set up secrets in your repository's settings. In this example, we use DOCKER_USERNAME and DOCKER_PASSWORD secrets for Docker Hub authentication. Make sure to replace these with your actual credentials.
+
+**Output:** <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%205">Task 5 Screenshots </a>
 
 ------
 
@@ -136,5 +143,9 @@ The text classification task was performed using several machine learning models
 •	<b>LinearSVC (Support Vector Classifier) outperformed the other models with an accuracy of 82.5%.</b></br>
 
 These accuracy scores were obtained through rigorous evaluation using appropriate metrics. The superior performance of the LinearSVC model indicates its effectiveness in categorizing consumer complaints into the specified categories.
+
+**Output:** <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%206">Task 6 Screenshots </a>
+
+
 
 

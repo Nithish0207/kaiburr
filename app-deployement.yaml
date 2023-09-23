@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-crud-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: springboot-k8s-mongodb
+  template:
+    metadata:
+      labels:
+        app: springboot-k8s-mongodb
+    spec:
+      containers:
+        - name: kaiburr-assessment-task_5
+          image: kaiburr-assessment-task_5:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: mongodb  # Set your MongoDB service name here
+            - name: DB_NAME
+              value: mydb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-crud-svc
+spec:
+  selector:
+    app: springboot-k8s-mongodb
+  ports:
+    - protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+  type: NodePort

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server Management</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .frame {
+            border: 1px solid #ccc;
+            padding: 20px;
+            height: 100%;
+            background-color: #f5f5f5; /* Add background color */
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Frame 1: Display all servers -->
+<div class="frame">
+    <h2>All Servers</h2>
+    <ul id="serversList"></ul>
+</div>
+
+<!-- Frame 2: Create a new server -->
+<div class="frame">
+    <h2>Create a New Server</h2>
+    <form id="createServerForm">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" >
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" >
+
+        <label for="language">Language:</label>
+        <input type="text" id="language" name="language" >
+
+        <label for="framework">Framework:</label>
+        <input type="text" id="framework" name="framework" >
+
+        <button type="submit">Add</button>
+    </form>
+</div>
+
+<!-- Frame 3: Delete a server by ID -->
+<div class="frame">
+    <h2>Delete by ID</h2>
+    <form id="deleteServerForm">
+        <label for="deleteId">Enter Id to Delete:</label>
+        <input type="text" id="deleteId" name="deleteId" >
+        <button type="submit">Delete</button>
+    </form>
+</div>
+
+<!-- Frame 4: Search servers by name -->
+<div class="frame">
+    <h2>Search by Name</h2>
+    <form id="searchServerForm">
+        <label for="searchName">Enter Name:</label>
+        <input type="text" id="searchName" name="searchName" >
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<script>
+    // Function to fetch all servers and display them
+    async function getAllServers() {
+        const response = await fetch('/servers');
+        const servers = await response.json();
+        const serversList = document.getElementById('serversList');
+        serversList.innerHTML = '';
+        servers.forEach(server => {
+            const li = document.createElement('li');
+            li.textContent = `ID: ${server.id}, Name: ${server.name}, Language: ${server.language}, Framework: ${server.framework}`;
+            serversList.appendChild(li);
+        });
+    }
+
+    // Function to create a new server
+    async function createServer() {
+        const id = document.getElementById('id').value;
+        const name = document.getElementById('name').value;
+        const language = document.getElementById('language').value;
+        const framework = document.getElementById('framework').value;
+
+        const serverData = { id, name, language, framework };
+
+        const response = await fetch('/servers', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(serverData)
+        });
+
+        if (response.status === 201) {
+            alert('Server created successfully');
+            getAllServers();
+        } else {
+            alert('Failed to create server');
+        }
+    }
+
+
+    // Function to search servers by name
+    async function searchServersByName() {
+        const searchName = document.getElementById('searchName').value;
+        const response = await fetch(`/servers/search?name=${searchName}`);
+        if (response.status === 200) {
+            const servers = await response.json();
+            const serversList = document.getElementById('serversList');
+            serversList.innerHTML = '';
+            servers.forEach(server => {
+                const li = document.createElement('li');
+                li.textContent = `ID: ${server.id}, Name: ${server.name},`;
+                serversList.appendChild(li);
+            });
+        } else {
+            alert('No servers found with the given name');
+        }
+    }
+
+    // Function to delete a server by ID
+    async function deleteServerById() {
+        const deleteId = document.getElementById('deleteId').value;
+        const response = await fetch(`/servers/${deleteId}`, {
+            method: 'DELETE'
+        });
+        if (response.status === 204) {
+            alert('Server deleted successfully');
+            getAllServers();
+        } else {
+            alert('Failed to delete server');
+        }
+    }
+
+    document.getElementById('deleteServerForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        deleteServerById();
+    });
+
+    document.getElementById('createServerForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        createServer();
+    });
+
+    document.getElementById('searchServerForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        searchServersByName();
+    });
+
+    getAllServers();
+</script>
+</body>
+</html>

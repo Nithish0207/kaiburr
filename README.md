@@ -40,6 +40,8 @@ We can use tools like Postman or curl or any other HTTP client to interact with 
   •	DELETE a server by ID: DELETE- http://localhost:8080/servers/{id}
 
 <h3>Output: <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%201">Task 1- Output Screenshots </a>
+</h3>
+Please check <b>src/main/java/com/example/Myapi</b> for the source code.
   
   ------
 
@@ -74,6 +76,8 @@ Successfully created two deployments within the Kubernetes cluster:
 
 
 <h3>Output: <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%203">Task 3- Output Screenshots </a>
+</h3>
+Please check <b>mongodb.yaml and app-deployement.yaml</b> for the source code.
 
 ------
 
@@ -93,6 +97,8 @@ The web user interface (UI) is created for task 1 that allows users to create, d
 You can use this web UI as a frontend interface for task 1. Make sure your backend is set up to handle the data operations (create, display, delete) that this UI requires.</br>
 
 <h3>Output: <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%204">Task 4- Output Screenshots </a>
+</h3>
+Please check <b>src/main/resources/static/index.html</b> for the source code.
 
 ------
 
@@ -113,6 +119,8 @@ I have defined all the YAML configuration for GitHub Actions workflow in maven.y
 To securely store sensitive information like Docker Hub credentials, you can set up secrets in your repository's settings. In this example, we use DOCKER_USERNAME and DOCKER_PASSWORD secrets for Docker Hub authentication. Make sure to replace these with your actual credentials.
 
 <h3>Output: <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%205">Task 5- Output Screenshots </a>
+</h3>
+Please check <b>.github/workflows/maven.yaml</b> for the source code.
 
 ------
 
@@ -155,7 +163,8 @@ The text classification task was performed using several machine learning models
 These accuracy scores were obtained through rigorous evaluation using appropriate metrics. The superior performance of the LinearSVC model indicates its effectiveness in categorizing consumer complaints into the specified categories.
 
 <h3>Output: <a href="https://github.com/Nithish0207/kaiburr/tree/master/Screenshots/task%206">Task 6- Output Screenshots </a>
-
+</h3>
+Please check <b>task 6.ipynb</b> for the source code.
 
 
 

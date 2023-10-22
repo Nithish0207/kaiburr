@@ -1,0 +1,17 @@
+spring:
+  data:
+    mongodb:
+      host: ${DB_HOST}  # MongoDB server host
+      port: ${DB_PORT:27017}  # MongoDB server port (default is 27017)
+      database: ${DB_NAME}  # MongoDB database name
+      username: ${DB_USERNAME}  # MongoDB username
+      password: ${DB_PASSWORD}  # MongoDB password
+
+logging:
+  level:
+    org.springframework.data.mongodb.core: DEBUG  # Enable MongoDB query logging
+
+server:
+  port: 8080  # Your Spring Boot application's HTTP port
+
+# Other application-specific configuration properties go here

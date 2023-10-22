@@ -13,15 +13,19 @@ spec:
         app: springboot-k8s-mongodb
     spec:
       containers:
-        - name: kaiburr-assessment-task_5
-          image: kaiburr-assessment-task_5:latest
+        - name: final-springboot-app
+          image: final-springboot-app:1.0
           ports:
             - containerPort: 8080
           env:
             - name: DB_HOST
-              value: mongodb  # Set your MongoDB service name here
+              value: mongodb
             - name: DB_NAME
               value: mydb
+            - name: DB_USERNAME
+              value: root
+            - name: DB_PASSWORD
+              value: root
 ---
 apiVersion: v1
 kind: Service
